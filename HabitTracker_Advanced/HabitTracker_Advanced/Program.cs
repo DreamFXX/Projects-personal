@@ -189,12 +189,24 @@ internal class Program
             recordsExist = CheckDatabaseForRecord(date);
 
             if (recordsExist == 0) break;
+
+            Console.WriteLine("Record with this date already exists! Try again.");
         }
+
+        if (date == "0")
+        {
+            Console.WriteLine("No record will by added.");
+            return;
+        }
+
+        var quantity =
+            GetQuantity("Enter the quantity of your habit session. Pick a unit of measurement in the next step.\n");
+        if (quantity == 0) Console.WriteLine("No records will be added.");
     }
 
     //
-    //
     // Get Date and Quantity section
+    //
     private static string GetDate()
     {
         var validDate = false;
